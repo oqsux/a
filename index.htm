@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <script src="js/jquery-3.2.1.js"></script>
+  <script>
+    $(function () {
+
+      $("#butonlar button:first").removeClass();
+      $("#butonlar button:first").addClass("btn btn-danger");
+
+      $("#sayfalar p").hide();
+      $("#sayfalar p:first").show();
+
+
+      $("#butonlar button").click(function () {
+
+        var index = $(this).index();
+        $("#butonlar button").removeClass();
+        $("#butonlar button").addClass("btn btn-primary");
+        $("#butonlar button:eq(" + index + ")").addClass("btn btn-danger");
+
+        $("#sayfalar p").slideUp();
+        $("#sayfalar p:eq(" + index + ")").slideDown();
+      });
+    });
+  </script>
+</body>
+
+<body>
+  <div class="container" style="margin-top:50px;">
+    <div class="row">
+      <div class="col-md-4">
+        <ul id="mansetYazi" class="list-group">
+          <li class="list-group-item">1. Kuzey koreden Şok Hareket</li>
+          <li class="list-group-item">2. Ekonomi Haberleri</li>
+          <li class="list-group-item">3. Aziz Yıldırımdan Olay sözler</li>
+        </ul>
+      </div>
+
+      <div class="col-md-8">
+        <ul id="mansetResim" class="list-group">
+          <li class="list-group-item">
+            <a href="#">
+              <img src="img/1.jpg" style="width: 700px;height: 300px">
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <img src="img/2.jpg" style="width: 700px;height: 300px">
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <img src="img/3.jpg" style="width: 700px;height: 300px">
+            </a>
+          </li>
+
+        <div class="btn-group" id="butonlar">
+          <button type="button" class="btn btn-success">1</button>
+          <button type="button" class="btn btn-success">2</button>
+          <button type="button" class="btn btn-success">3</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="js/jquery-3.2.1.js"></script>
+  <script>
+    $(function () {
+      var s = 0;
+      $("#mansetResim li").hide();
+      $("#mansetResim li:first").show();
+
+      $("#mansetYazi li:first").addClass("active");
+
+      $("#butonlar button:first").removeClass();
+      $("#butonlar button:first").addClass("btn btn-danger");
+
+      $("#mansetYazi li, #butonlar button").hover(function () {
+        var index = $(this).index();
+        $.haber(index);
+      });
+
+      setInterval(function () {
+        s++;
+
+        if (s > 4) { s = 0; }
+        $.haber(s);
+      }, 3000);
+
+
+      $.haber = function (index) {
+        $("#mansetResim li").hide();
+        $("#mansetResim li:eq(" + index + ")").show();
+
+        $("#mansetYazi li").removeClass("active");
+        $("#mansetYazi li:eq(" + index + ")").addClass("active");
+
+
+        $("#butonlar button").removeClass();
+        $("#butonlar button").addClass("btn btn-success");
+
+        $("#butonlar button:eq(" + index + ")").removeClass();
+        $("#butonlar button:eq(" + index + ")").addClass("btn btn-danger");
+      };
+    });
+  </script>
+</body>
+<body>
+  <div class="container" style="margin-top:50px;">
+
+<h1>Foto Galeri</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <a href="img/4.jpg">
+          <p>Dünya</p>
+        <img src="img/4.jpg" alt="" class="center-block img-responsive img-thumbnail">
+        </a>
+      </div>
+      <div class="col-md-4">
+          <a href="img/5.jpg">
+            <p>Ekonomi</p>
+          <img src="img/5.jpg" alt="" class="center-block img-responsive img-thumbnail">
+          </a>
+      </div>
+      <div class="col-md-4">
+          <a href="img/6.jpg">
+            <p>Spor</p>
+          <img src="img/6.jpg" alt="" class="center-block img-responsive img-thumbnail">
+          </a>
+
+      </div>
+    </div>
+  </div>
+</body>
+<body style="background-color:darkgrey">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div class="container" style="margin-top:50px;">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="btn-group" id="butonlar">
+        <button class="btn btn-primary">Dünya</button>
+        <button class="btn btn-primary">Ekonomi</button>
+        <button class="btn btn-primary">Spor</button>
+
+      </div>
+      <div id="sayfalar" style="margin-top:20px">
+        <p class="alert alert-info" style="height:200px;">
+          <b>Dünya</b>
+
+          <br>
+          Kuzey Kore'nin resmi haber ajansı KCNA, Pasifik Okyanusu'ndaki ABD toprak parçası olan Guam Adası açıklarına orta-uzun menzilli füzelerin fırlatılması için yeni bir planın hazırlandığını ifade etti.
+          Kuzey Kore'nin Guam açıklarına fırlatmayı hedeflediği füzelerin Hwasong-12 model olduğu de ifade edildi.
+          Kuzey Kore'den gelen son açıklamalar, Washington ve Pyongyang arasında tırmanan gerilimin son noktası niteliğinde. ABD'nin talebiyle toplanan Birleşmiş Milletler Güvenlik Konseyi, nükleer silah programını durdurmayan Kuzey Kore'ye karşı yeni yaptırımların uygulanmasını oybirliğiyle kararlaştırmıştı.
+          <br>
+
+        </p>
+        <p class="alert alert-info" style="height:200px;">
+          <b>Ekonomi</b>
+          <br> Maliye Bakanı Şimşek “ÖTV’deki dağınık yapının toparlanacağını ve dört aşamalı değişikliğe akaryakıt sektöründen başlandığı, ardından otomotiv, alkol ve sigara alanlarının geldiğini” söyledi.
+
+Yudayeva ayrıca, finansal sıkıntı çekebilecek bankalara da yardıma hazır olduklarını ifade etti. “Kriz eğilimlerini aştığımızı söylemek için henüz erken” diyen Rusya Merkez Bankası Başkan Yardımcısı, rubledeki dalgalanmadaki tepe noktanın geride kaldığını belirtti.
+
+Plastik ihracatı yüzde 8,9 arttı. Türk plastik sektörünün hammadde dahil plastik ve mamulleri ihracatı, 2014 yılında 2013'e kıyasla miktar bazında %14,9 artışla 2,25 milyon tona, değer bazında ise %8,9 artarak 6,1 milyar dolara ulaştı (Dünya).
+
+Yerli gözlem uydusunda hedef 20 santimetre. Bilim, Sanayi ve Teknoloji Bakanı Fikri Işık, "Metre altı yüksek çözünürlüklü yer gözlem uyduları yapacağız. Buradaki hedefimiz 20 santimetre" dedi
+
+Yunanistan'da bankacılık kaynağı, mevduat çıkışının hızlanarak son iki günde 1 milyar Euro'nun üzerine çıktığını söyledi (Cnbc-e)
+Akaryakıtta tavan fiyatını iki ay süre ile EPDK belirleyecek. Kurul, benzinde rafineri çıkış fiyatının üzerine eklenecek kar marjını litrede 34 kuruş, motorinde ise 37 kuruş olarak sınırlandırdı. Akaryakıt fiyatlarının 9-10 kuruş ucuzlaması bekleniyor.
+
+Stratejik Debaltseve kentinin isyancılar tarafından ele geçirilmesini ateşkesin ihlali olarak tanımlayan Cumhurbaşkanı Poroşenko'nun bölgeye barışgücü gönderilmesi çağrısı Moskova tarafından reddedildi (VOA).
+
+
+        </p>
+        <p class="alert alert-info" style="height:200px;">
+          <b>Spor</b>
+          <br> Fenerbahçe Başkanı Aziz Yıldırım, sarı-lacivertli takımın antrenmanı öncesi basın mensuplarına açıklamalarda bulundu. Hakem hatalarına değinen Yıldırım, 'Hakem hata yaptıktan sonra TFF ve MHK o hakemlerin hatalarını örtmeye çalışıp, hata yapmadığını söylerlerse yeni hatalar da gelecektir. MHK Başkanı Yusuf Namoğlu pazartesi günü oynadığımız maçın 90 dakikasını izlesin. İlk yarıda maç çok kez durdu masörler girdi sahaya ama sadece maç 1 dakika uzatıldı. Rakibin Emre'ye bastığı pozisyon kırmızı kart. Mehmet Topal'ın pozisyonu ise hakemin tamamen dağıldığı andır. Yan hakem ve dördüncü hakem bağırıyor, 'Özgür at at' diye. Ama Yusuf Namoğlu evinden duymamış. Bugün diyor ki bağırmadı, öyle söylemedi. Birçok pozisyonda yan hakem ve dördüncü hakem bizim de rakiplerimizin de futbolcularını oyundan attırdılar. Bir şey söylemeye hakları yoksa çıkmasınlar sahaya. Dördüncü hakem, 'Özgür at at' diye bağırıyor ve bu sırada İsmail hoca da yanında onu dinliyor. Oyuncularda duymuşlar ve hepsi şahit yani hepsi mi yalan söylüyor' dedi.
+
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</html>
